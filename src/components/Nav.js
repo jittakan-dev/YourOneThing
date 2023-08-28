@@ -210,7 +210,7 @@ function Nav() {
             <div className="flex flex-col justify-center items-start">
               <li className="hover-underline py-3 cursor-pointer">
                 <Link href="/" onClick={clickNav}>
-                  OneThings
+                  Y1T
                 </Link>
               </li>
               <li className="hover-underline py-3 cursor-pointer">
