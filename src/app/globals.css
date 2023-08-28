@@ -2,26 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html, body {
+  font-family: "Courier New", Courier, monospace;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  background-color: rgb(241 245 249); /* bg-slate-200	background-color: rgb(226 232 240); #EAE9E5*/
+  color: #013b5c;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.menu-toggle .bar {
+  transition: .3s cubic-bezier(.8, .5, .2, 1.4);  
+}
+.menu-toggle.open .bar:nth-child(1) {
+  transform: translateY(0.4rem);
+}
+.menu-toggle.open .bar:nth-child(2) {
+  transform: translateY(-0.4rem);  
+}
+.hover-underline {
+  display: inline-block;
+  position: relative;
+  color:rgb(1, 59, 92);
+}
+.hover-underline:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(1, 59, 92);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+.hover-underline:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+/* :root {
+  --primary: rebeccapurple;
+  --secondary: cornflowerblue;
+} */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
 }
