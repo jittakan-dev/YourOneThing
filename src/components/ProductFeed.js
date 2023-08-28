@@ -82,93 +82,103 @@ const ProductCardList = ({ Mockdata, sort, type, order }) => {
   return (
     <div className="flex flex-wrap">
       {filteredData && filteredData.length > 0 ? (
-        filteredData
-          .slice(
-            0,
-            currentBreakpoint === "md" ||
-              currentBreakpoint === "sm" ||
-              currentBreakpoint === "smr" ||
-              currentBreakpoint === "sx"
-              ? 2
-              : 3
-          )
-          .map((item, index) => (
-            <div
-              key={index}
-              className="w-2/6 sx:w-full smr:w-1/2 sm:w-3/6 md:w-3/6 lg:w-2/6 xl:w-2/6 2xl:w-2/6 p-3 sx:p-0"
-            >
-              {item && (
-                <ProductCard
-                  id={item.id}
-                  title={item.title}
-                  title_description={item.title_description}
-                  full_description={item.full_description}
-                  image_t={item.image_t}
-                  image_1={item.image_1}
-                  image_2={item.image_2}
-                  image_3={item.image_3}
-                  image_4={item.image_4}
-                  image_h={item.image_h}
-                  link={item.link}
-                  price={item.price}
-                  pop={item.pop}
-                  date={item.date}
-                  type={item.type}
-                />
-              )}
-            </div>
-          ))
+        <React.Fragment>
+          {filteredData
+            .slice(
+              0,
+              currentBreakpoint === "md" ||
+                currentBreakpoint === "sm" ||
+                currentBreakpoint === "smr" ||
+                currentBreakpoint === "sx"
+                ? 2
+                : 3
+            )
+            .map((item, index) => (
+              <div
+                key={index}
+                className="w-2/6 sx:w-full smr:w-1/2 sm:w-3/6 md:w-3/6 lg:w-2/6 xl:w-2/6 2xl:w-2/6 p-3 sx:p-0"
+              >
+                {item && (
+                  <ProductCard
+                    id={item.id}
+                    title={item.title}
+                    title_description={item.title_description}
+                    full_description={item.full_description}
+                    image_t={item.image_t}
+                    image_1={item.image_1}
+                    image_2={item.image_2}
+                    image_3={item.image_3}
+                    image_4={item.image_4}
+                    image_h={item.image_h}
+                    link={item.link}
+                    price={item.price}
+                    pop={item.pop}
+                    date={item.date}
+                    type={item.type}
+                  />
+                )}
+              </div>
+            ))}
+          {currentBreakpoint === "md" ||
+          currentBreakpoint === "sm" ||
+          currentBreakpoint === "smr" ||
+          currentBreakpoint === "sx"
+            ? filteredData.slice(2).map((item, index) => (
+                <div
+                  key={index}
+                  className="w-1/4 sx:w-full smr:w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 2xl:w-1/4 p-3 sx:p-0"
+                >
+                  {item && (
+                    <ProductCard
+                      id={item.id}
+                      title={item.title}
+                      title_description={item.title_description}
+                      full_description={item.full_description}
+                      image_t={item.image_t}
+                      image_1={item.image_1}
+                      image_2={item.image_2}
+                      image_3={item.image_3}
+                      image_4={item.image_4}
+                      image_h={item.image_h}
+                      link={item.link}
+                      price={item.price}
+                      pop={item.pop}
+                      date={item.date}
+                      type={item.type}
+                    />
+                  )}
+                </div>
+              ))
+            : filteredData.slice(3).map((item, index) => (
+                <div
+                  key={index}
+                  className="w-1/4 sx:w-full smr:w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 2xl:w-1/4 p-3 sx:p-0"
+                >
+                  {item && (
+                    <ProductCard
+                      id={item.id}
+                      title={item.title}
+                      title_description={item.title_description}
+                      full_description={item.full_description}
+                      image_t={item.image_t}
+                      image_1={item.image_1}
+                      image_2={item.image_2}
+                      image_3={item.image_3}
+                      image_4={item.image_4}
+                      image_h={item.image_h}
+                      link={item.link}
+                      price={item.price}
+                      pop={item.pop}
+                      date={item.date}
+                      type={item.type}
+                    />
+                  )}
+                </div>
+              ))}
+        </React.Fragment>
       ) : (
         <p>No data available</p>
       )}
-
-      {numRows &&
-        Array.from({ length: numRows - 1 }, (_, row) => (
-          <React.Fragment key={row}>
-            {filteredData &&
-              filteredData
-                .slice(
-                  currentBreakpoint === "md" ||
-                    currentBreakpoint === "sm" ||
-                    currentBreakpoint === "smr" ||
-                    currentBreakpoint === "sx"
-                    ? 2
-                    : 3 + row * 3,
-                  6 + row * 3
-                )
-                .map((item, index) => (
-                  <div
-                    key={index}
-                    className="w-1/4 sx:w-full smr:w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 2xl:w-1/4 p-3 sx:p-0"
-                  >
-                    {item && (
-                      <ProductCard
-                        id={item.id}
-                        title={item.title}
-                        title_description={item.title_description}
-                        full_description={item.full_description}
-                        image_t={item.image_t}
-                        image_1={item.image_1}
-                        image_2={item.image_2}
-                        image_3={item.image_3}
-                        image_4={item.image_4}
-                        image_h={item.image_h}
-                        link={item.link}
-                        price={item.price}
-                        pop={item.pop}
-                        date={item.date}
-                        type={item.type}
-                      />
-                    )}
-                  </div>
-                ))}
-            {!filteredData && (
-              <div className="w-1/4 sx:w-full p-3 sx:p-0">
-                <p>No data available</p>
-              </div>
-            )}
-          </React.Fragment>
-        ))}
     </div>
   );
 };
